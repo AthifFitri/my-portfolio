@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
     IconArrowRight,
     IconBrandGithub,
+    IconBrandGitlab,
     IconBrandLinkedin,
     IconFileText,
 } from "@tabler/icons-react";
@@ -12,65 +15,81 @@ import MyPic from "@/assets/images/mypic.png";
 import { Header } from "@/components/header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+import { TextLoop } from '@/components/motion-primitives/text-loop';
 
 export function Homepage() {
     return (
-        <section className="relative min-h-screen overflow-hidden px-20">
-
+        <section className="relative min-h-screen overflow-hidden px-4 md:px-10 lg:px-20">
             <Header />
 
             {/* Background Grid */}
             <div className="absolute inset-0 -z-20 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[48px_48px]" />
 
             {/* Glow */}
-            <div className="absolute top-20 left-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl -z-10" />
-            <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl -z-10" />
+            <div className="absolute left-20 top-20 -z-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+            <div className="absolute bottom-20 right-20 -z-10 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl" />
 
-            <div className="container mx-auto pt-24">
-
-                <div className="grid min-h-[calc(100vh-96px)] items-center gap-12 lg:grid-cols-2">
-
+            <div className="mx-auto w-full max-w-[1600px] pt-24">
+                <div className="grid items-center gap-4 lg:min-h-[calc(100vh-96px)] lg:grid-cols-2 lg:gap-12">
                     {/* LEFT */}
-                    <div className="space-y-6 py-5">
-
+                    <div className="space-y-6 py-5 lg:py-0">
                         <Badge
                             className="
                                 w-fit
                                 rounded-full
                                 border-green-500/30
                                 bg-green-500/10
-                                text-green-400
                                 px-4 py-1
+                                text-green-400
                             "
                         >
                             ● Available For Opportunities
                         </Badge>
 
                         <div>
-                            <h1 className="text-5xl md:text-7xl font-black leading-tight">
-                                Hi, I'm{" "}
+                            <h1 className="text-5xl font-black leading-tight md:text-7xl">
+                                Hi, I&apos;m{" "}
                                 <span className="bg-linear-to-r from-cyan-400 via-primary to-purple-500 bg-clip-text text-transparent">
                                     Athif Fitri
                                 </span>
                             </h1>
 
-                            <h2 className="mt-6 text-2xl md:text-3xl font-semibold">
+                            <h2 className="mt-6 text-2xl font-bold leading-snug md:text-3xl">
                                 Software Developer
                                 <br />
-                                <span className="text-muted-foreground">
-                                    & Quality Assurance Enthusiast
-                                </span>
+                                <TextLoop className="inline-flex min-h-[32px] items-center overflow-hidden md:min-h-[40px]">
+                                    <span className="bg-linear-to-r from-cyan-300 via-purple-300 to-pink-400 bg-clip-text text-xl font-bold text-transparent md:text-2xl">
+                                        Building reliable web systems
+                                    </span>
+
+                                    <span className="bg-linear-to-r from-cyan-300 via-purple-300 to-pink-400 bg-clip-text text-xl font-bold text-transparent md:text-2xl">
+                                        Developing scalable applications
+                                    </span>
+
+                                    <span className="bg-linear-to-r from-cyan-300 via-purple-300 to-pink-400 bg-clip-text text-xl font-bold text-transparent md:text-2xl">
+                                        Crafting clean user experiences
+                                    </span>
+
+                                    <span className="bg-linear-to-r from-cyan-300 via-purple-300 to-pink-400 bg-clip-text text-xl font-bold text-transparent md:text-2xl">
+                                        Delivering practical digital solutions
+                                    </span>
+                                </TextLoop>
                             </h2>
 
-                            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                                Final-year Software Engineering student
-                                passionate about building scalable web
-                                applications, automation testing solutions,
-                                and reliable digital experiences.
+                            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                                I build practical, scalable, and user-friendly web applications with
+                                clean code and reliable delivery.
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap items-center gap-4">
                             <Button
                                 size="lg"
                                 className="shadow-lg shadow-primary/30"
@@ -88,54 +107,60 @@ export function Homepage() {
                                 className="bg-background/30 backdrop-blur"
                                 asChild
                             >
-                                <Link href="#contact">
-                                    Hire Me
-                                </Link>
+                                <Link href="#contact">Hire Me</Link>
                             </Button>
+
+                            <div className="ml-0 flex gap-2 md:ml-2">
+                                <TooltipProvider delayDuration={100}>
+                                    <SocialIcon
+                                        label="LinkedIn"
+                                        href="https://www.linkedin.com/in/muhammad-athif-fitri"
+                                    >
+                                        <IconBrandLinkedin className="size-6" />
+                                    </SocialIcon>
+
+                                    <SocialIcon
+                                        label="GitHub"
+                                        href="https://github.com/AthifFitri"
+                                    >
+                                        <IconBrandGithub className="size-6" />
+                                    </SocialIcon>
+
+                                    <SocialIcon
+                                        label="GitLab"
+                                        href="https://gitlab.com/athiffitri"
+                                    >
+                                        <IconBrandGitlab className="size-6" />
+                                    </SocialIcon>
+
+                                    <SocialIcon
+                                        label="Resume"
+                                        href="/resume.pdf"
+                                    >
+                                        <IconFileText className="size-6" />
+                                    </SocialIcon>
+                                </TooltipProvider>
+                            </div>
                         </div>
 
-                        <div className="flex gap-4">
-                            <Button variant="ghost" size="icon" asChild>
-                                <Link
-                                    href="https://github.com/yourusername"
-                                    target="_blank"
-                                >
-                                    <IconBrandGithub className="h-5 w-5" />
-                                </Link>
-                            </Button>
-
-                            <Button variant="ghost" size="icon" asChild>
-                                <Link
-                                    href="https://linkedin.com/in/yourusername"
-                                    target="_blank"
-                                >
-                                    <IconBrandLinkedin className="h-5 w-5" />
-                                </Link>
-                            </Button>
-
-                            <Button variant="ghost" size="icon" asChild>
-                                <Link href="/resume.pdf">
-                                    <IconFileText className="h-5 w-5" />
-                                </Link>
-                            </Button>
-                        </div>
-
-                        <div className="grid max-w-md grid-cols-3 gap-4">
-                            <StatCard title="10+" label="Projects Built" />
-                            <StatCard title="2+" label="Years Learning" />
-                            <StatCard title="2025" label="Graduate" />
+                        <div className="grid max-w-lg grid-cols-2 gap-3 sm:grid-cols-4">
+                            <StatCard title="8+" label="Projects" />
+                            <StatCard title="2+" label="Years Exp." />
+                            <StatCard title="5+" label="Tools" />
+                            <StatCard title="2025" label="Graduated" />
                         </div>
                     </div>
 
                     {/* RIGHT */}
-                    <div className="relative flex items-center justify-center">
-
+                    <div className="relative hidden h-full items-end justify-center lg:flex">
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="h-h-112.5 w-h-112.5 rounded-full bg-linear-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 blur-3xl" />
+                            <div className="h-[500px] w-[500px] rounded-full bg-linear-to-r from-cyan-500/15 via-purple-500/15 to-pink-500/15 blur-3xl" />
                         </div>
 
-                        <div className="relative">
+                        <div className="absolute bottom-10 h-[420px] w-[420px] rounded-full border border-primary/10" />
+                        <div className="absolute bottom-16 h-[330px] w-[330px] rounded-full border border-primary/5" />
 
+                        <div className="relative flex h-full min-w-[410px] items-end justify-center">
                             <Image
                                 src={MyPic}
                                 alt="Athif Fitri"
@@ -143,52 +168,186 @@ export function Homepage() {
                                 className="
                                     relative
                                     z-10
+                                    max-h-[78vh]
                                     w-auto
-                                    max-h-[80vh]
                                     object-contain
-                                    drop-shadow-[0_0_50px_rgba(0,255,255,0.35)]
+                                    object-bottom
+                                    drop-shadow-[0_0_50px_rgba(0,255,255,0.28)]
                                 "
                             />
 
-                            <div className="absolute -left-8 top-20">
-                                <SkillCard text="Laravel" />
-                            </div>
-
-                            <div className="absolute -right-8 top-10">
-                                <SkillCard text="React" />
-                            </div>
-
-                            <div className="absolute -right-10 top-40">
-                                <SkillCard text="QA Testing" />
-                            </div>
-
-                            <div className="absolute left-0 bottom-28">
-                                <SkillCard text="ASP.NET" />
-                            </div>
-
-                            <div className="absolute right-0 bottom-12">
-                                <SkillCard text="Automation" />
-                            </div>
-
-                            <div className="absolute left-10 bottom-0">
-                                <SkillCard text="Next.js" />
-                            </div>
+                            {skills.map((skill) => (
+                                <div key={skill.text} className={skill.className}>
+                                    <SkillCard text={skill.text} />
+                                </div>
+                            ))}
                         </div>
                     </div>
 
+                    {/* Mobile Image */}
+                    <div className="relative -mt-4 flex h-[360px] items-end justify-center overflow-hidden lg:hidden">
+                        <div className="absolute bottom-8 h-[280px] w-[280px] rounded-full bg-linear-to-r from-cyan-500/15 via-purple-500/15 to-pink-500/15 blur-3xl" />
+
+                        <div className="relative flex h-full w-full max-w-[340px] items-end justify-center">
+                            <Image
+                                src={MyPic}
+                                alt="Athif Fitri"
+                                priority
+                                className="
+                                    relative
+                                    z-10
+                                    max-h-[360px]
+                                    w-auto
+                                    object-contain
+                                    object-bottom
+                                    drop-shadow-[0_0_40px_rgba(0,255,255,0.22)]
+                                "
+                            />
+
+                            <div className="absolute left-3 top-[6%] z-20">
+                                <SkillCard text="Laravel" compact />
+                            </div>
+
+                            <div className="absolute right-1 top-[14%] z-20">
+                                <SkillCard text="Next.js" compact />
+                            </div>
+
+                            <div className="absolute left-4 top-[42%] z-20">
+                                <SkillCard text="ASP.NET" compact />
+                            </div>
+
+                            <div className="absolute right-3 top-[52%] z-20">
+                                <SkillCard text="React" compact />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     );
 }
 
-function SkillCard({ text }: { text: string }) {
+function SocialIcon({
+    label,
+    href,
+    children,
+}: {
+    label: string;
+    href: string;
+    children: React.ReactNode;
+}) {
+    const isExternal = href.startsWith("http");
+
     return (
-        <div className="rounded-full border bg-background/70 backdrop-blur-md px-4 py-2 shadow-lg shadow-primary/20 text-sm font-medium whitespace-nowrap">
-            {text}
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    className="
+                        size-11
+                        rounded-xl
+                        border
+                        border-transparent
+                        text-muted-foreground
+                        transition
+                        duration-300
+                        hover:border-primary/30
+                        hover:bg-primary/10
+                        hover:text-foreground
+                    "
+                    asChild
+                >
+                    <Link
+                        href={href}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                        aria-label={label}
+                    >
+                        {children}
+                    </Link>
+                </Button>
+            </TooltipTrigger>
+
+            <TooltipContent side="bottom">
+                <p>{label}</p>
+            </TooltipContent>
+        </Tooltip>
+    );
+}
+
+function SkillCard({
+    text,
+    compact = false,
+}: {
+    text: string;
+    compact?: boolean;
+}) {
+    return (
+        <div
+            className={`
+                group
+                flex
+                items-center
+                gap-2
+                whitespace-nowrap
+                rounded-full
+                border
+                border-primary/20
+                bg-background/60
+                text-foreground
+                shadow-lg
+                shadow-primary/5
+                backdrop-blur-xl
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-primary/50
+                hover:bg-background/80
+                hover:shadow-primary/15
+                ${compact ? "px-3 py-1.5 text-xs" : "px-3.5 py-2 text-sm"}
+            `}
+        >
+            <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" />
+            <span className="font-medium">{text}</span>
         </div>
     );
 }
+
+const skills = [
+    {
+        text: "PHP",
+        className: "absolute left-[-35px] top-[22%] z-20",
+    },
+    {
+        text: "Laravel",
+        className: "absolute right-[-55px] top-[22%] z-20",
+    },
+    {
+        text: "TypeScript",
+        className: "absolute left-[-55px] top-[38%] z-20",
+    },
+    {
+        text: "Next.js",
+        className: "absolute right-[-65px] top-[38%] z-20",
+    },
+    {
+        text: "C#",
+        className: "absolute left-[-35px] top-[54%] z-20",
+    },
+    {
+        text: "ASP.NET",
+        className: "absolute right-[-45px] top-[54%] z-20",
+    },
+    {
+        text: "Java",
+        className: "absolute left-[10px] top-[70%] z-20",
+    },
+    {
+        text: "React",
+        className: "absolute right-[5px] top-[70%] z-20",
+    },
+];
 
 function StatCard({
     title,
@@ -198,9 +357,11 @@ function StatCard({
     label: string;
 }) {
     return (
-        <div className="rounded-xl border bg-background/50 backdrop-blur p-4">
-            <h3 className="text-2xl font-bold">{title}</h3>
-            <p className="text-xs text-muted-foreground">{label}</p>
+        <div className="rounded-xl border bg-background/50 p-3 backdrop-blur sm:p-4">
+            <h3 className="text-xl font-bold sm:text-2xl">{title}</h3>
+            <p className="text-xs text-muted-foreground sm:text-sm">
+                {label}
+            </p>
         </div>
     );
 }

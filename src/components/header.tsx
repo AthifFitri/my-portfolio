@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const menuItems = [
     { name: "Home", href: "/" },
     { name: "Skills", href: "#skills" },
-    { name: "Portfolio", href: "#projects" },
+    { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
 ];
 

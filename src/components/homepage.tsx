@@ -24,17 +24,149 @@ import {
 
 import { TextLoop } from '@/components/motion-primitives/text-loop';
 
+function SocialIcon({
+    label,
+    href,
+    children,
+}: {
+    label: string;
+    href: string;
+    children: React.ReactNode;
+}) {
+    const isExternal = href.startsWith("http");
+
+    return (
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    className="
+                        size-11
+                        rounded-xl
+                        border
+                        border-transparent
+                        text-muted-foreground
+                        transition
+                        duration-300
+                        hover:border-primary/30
+                        hover:bg-primary/10
+                        hover:text-foreground
+                    "
+                    asChild
+                >
+                    <Link
+                        href={href}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                        aria-label={label}
+                    >
+                        {children}
+                    </Link>
+                </Button>
+            </TooltipTrigger>
+
+            <TooltipContent side="bottom">
+                <p>{label}</p>
+            </TooltipContent>
+        </Tooltip>
+    );
+}
+
+function SkillCard({
+    text,
+    compact = false,
+}: {
+    text: string;
+    compact?: boolean;
+}) {
+    return (
+        <div
+            className={`
+                group
+                flex
+                items-center
+                gap-2
+                whitespace-nowrap
+                rounded-full
+                border
+                border-primary/20
+                bg-background/60
+                text-foreground
+                shadow-lg
+                shadow-primary/5
+                backdrop-blur-xl
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-primary/50
+                hover:bg-background/80
+                hover:shadow-primary/15
+                ${compact ? "px-3 py-1.5 text-xs" : "px-3.5 py-2 text-sm"}
+            `}
+        >
+            <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" />
+            <span className="font-medium">{text}</span>
+        </div>
+    );
+}
+
+const skills = [
+    {
+        text: "PHP",
+        className: "absolute left-[-35px] top-[22%] z-20",
+    },
+    {
+        text: "Laravel",
+        className: "absolute right-[-55px] top-[22%] z-20",
+    },
+    {
+        text: "TypeScript",
+        className: "absolute left-[-55px] top-[38%] z-20",
+    },
+    {
+        text: "Next.js",
+        className: "absolute right-[-65px] top-[38%] z-20",
+    },
+    {
+        text: "C#",
+        className: "absolute left-[-35px] top-[54%] z-20",
+    },
+    {
+        text: "ASP.NET",
+        className: "absolute right-[-45px] top-[54%] z-20",
+    },
+    {
+        text: "Java",
+        className: "absolute left-[10px] top-[70%] z-20",
+    },
+    {
+        text: "React",
+        className: "absolute right-[5px] top-[70%] z-20",
+    },
+];
+
+function StatCard({
+    title,
+    label,
+}: {
+    title: string;
+    label: string;
+}) {
+    return (
+        <div className="rounded-xl border bg-background/50 p-3 backdrop-blur sm:p-4">
+            <h3 className="text-xl font-bold sm:text-2xl">{title}</h3>
+            <p className="text-xs text-muted-foreground sm:text-sm">
+                {label}
+            </p>
+        </div>
+    );
+}
+
 export function Homepage() {
     return (
         <section className="relative min-h-screen overflow-hidden px-4 md:px-10 lg:px-20">
             <Header />
-
-            {/* Background Grid */}
-            <div className="absolute inset-0 -z-20 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[48px_48px]" />
-
-            {/* Glow */}
-            <div className="absolute left-20 top-20 -z-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-            <div className="absolute bottom-20 right-20 -z-10 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl" />
 
             <div className="mx-auto w-full max-w-[1600px] pt-24">
                 <div className="grid items-center gap-4 lg:min-h-[calc(100vh-96px)] lg:grid-cols-2 lg:gap-12">
@@ -224,144 +356,5 @@ export function Homepage() {
                 </div>
             </div>
         </section>
-    );
-}
-
-function SocialIcon({
-    label,
-    href,
-    children,
-}: {
-    label: string;
-    href: string;
-    children: React.ReactNode;
-}) {
-    const isExternal = href.startsWith("http");
-
-    return (
-        <Tooltip>
-            <TooltipTrigger asChild>
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="
-                        size-11
-                        rounded-xl
-                        border
-                        border-transparent
-                        text-muted-foreground
-                        transition
-                        duration-300
-                        hover:border-primary/30
-                        hover:bg-primary/10
-                        hover:text-foreground
-                    "
-                    asChild
-                >
-                    <Link
-                        href={href}
-                        target={isExternal ? "_blank" : undefined}
-                        rel={isExternal ? "noopener noreferrer" : undefined}
-                        aria-label={label}
-                    >
-                        {children}
-                    </Link>
-                </Button>
-            </TooltipTrigger>
-
-            <TooltipContent side="bottom">
-                <p>{label}</p>
-            </TooltipContent>
-        </Tooltip>
-    );
-}
-
-function SkillCard({
-    text,
-    compact = false,
-}: {
-    text: string;
-    compact?: boolean;
-}) {
-    return (
-        <div
-            className={`
-                group
-                flex
-                items-center
-                gap-2
-                whitespace-nowrap
-                rounded-full
-                border
-                border-primary/20
-                bg-background/60
-                text-foreground
-                shadow-lg
-                shadow-primary/5
-                backdrop-blur-xl
-                transition
-                duration-300
-                hover:-translate-y-1
-                hover:border-primary/50
-                hover:bg-background/80
-                hover:shadow-primary/15
-                ${compact ? "px-3 py-1.5 text-xs" : "px-3.5 py-2 text-sm"}
-            `}
-        >
-            <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" />
-            <span className="font-medium">{text}</span>
-        </div>
-    );
-}
-
-const skills = [
-    {
-        text: "PHP",
-        className: "absolute left-[-35px] top-[22%] z-20",
-    },
-    {
-        text: "Laravel",
-        className: "absolute right-[-55px] top-[22%] z-20",
-    },
-    {
-        text: "TypeScript",
-        className: "absolute left-[-55px] top-[38%] z-20",
-    },
-    {
-        text: "Next.js",
-        className: "absolute right-[-65px] top-[38%] z-20",
-    },
-    {
-        text: "C#",
-        className: "absolute left-[-35px] top-[54%] z-20",
-    },
-    {
-        text: "ASP.NET",
-        className: "absolute right-[-45px] top-[54%] z-20",
-    },
-    {
-        text: "Java",
-        className: "absolute left-[10px] top-[70%] z-20",
-    },
-    {
-        text: "React",
-        className: "absolute right-[5px] top-[70%] z-20",
-    },
-];
-
-function StatCard({
-    title,
-    label,
-}: {
-    title: string;
-    label: string;
-}) {
-    return (
-        <div className="rounded-xl border bg-background/50 p-3 backdrop-blur sm:p-4">
-            <h3 className="text-xl font-bold sm:text-2xl">{title}</h3>
-            <p className="text-xs text-muted-foreground sm:text-sm">
-                {label}
-            </p>
-        </div>
     );
 }

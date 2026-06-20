@@ -3,6 +3,7 @@
 import {
     IconBrandReact,
     IconBrandTypescript,
+    IconBrandBootstrap,
     IconBrandTailwind,
     IconCode,
     IconBrandPhp,
@@ -14,6 +15,7 @@ import {
     IconBrandNextjs,
     IconServer,
     IconTools,
+    IconBrandGit,
     IconBrandGithub,
     IconBrandGitlab,
     IconBrandVscode,
@@ -30,6 +32,7 @@ const skillGroups = [
         skills: [
             { name: "React", icon: IconBrandReact },
             { name: "TypeScript", icon: IconBrandTypescript },
+            { name: "Bootstrap", icon: IconBrandBootstrap },
             { name: "Tailwind CSS", icon: IconBrandTailwind },
             { name: "Shadcn UI", icon: IconCode },
         ],
@@ -72,7 +75,7 @@ const skillGroups = [
         description: "Daily tools for version control, development, API testing, and automation.",
         icon: IconTools,
         skills: [
-            { name: "Git", icon: IconTools },
+            { name: "Git", icon: IconBrandGit },
             { name: "GitHub", icon: IconBrandGithub },
             { name: "GitLab", icon: IconBrandGitlab },
             { name: "VS Code", icon: IconBrandVscode },

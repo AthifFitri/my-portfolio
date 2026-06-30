@@ -208,7 +208,7 @@ export function Contact() {
                                             {item.label}
                                         </p>
 
-                                        <p className="mt-1 break-words font-semibold text-foreground">
+                                        <p className="mt-1 wrap-break-word font-semibold text-foreground">
                                             {item.value}
                                         </p>
                                     </Link>

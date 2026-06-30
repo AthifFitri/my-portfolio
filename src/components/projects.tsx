@@ -4,6 +4,11 @@ import * as React from "react";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import {
+    IconMovie,
+    IconFileAlert,
+    IconSeedling,
+    IconBuildingFactory2,
+    IconBriefcase,
     IconBrandGithub,
     IconCode,
     IconDeviceDesktop,
@@ -24,64 +29,76 @@ import {
 
 const projects = [
     {
+        title: "Movie Discovery System",
+        shortTitle: "Moviepedia",
+        category: "Web Application",
+        status: "Completed",
+        description:
+            "A movie discovery platform with movie search, detailed movie information, trailers, trending movies, and image galleries.",
+        tech: ["React", "TMDB API", "YouTube API", "Flickr API"],
+        liveUrl: "#",
+        githubUrl: "https://github.com/AthifFitri/moviepedia",
+        icon: IconMovie,
+    },
+    {
+        title: "Felda Risk Tracker",
+        shortTitle: "RiskTracker",
+        category: "Web Application",
+        status: "Completed",
+        description:
+            "A risk management system for tracking, assessing, and monitoring organizational risks with mitigation planning, dashboards, and reporting features.",
+        tech: ["Laravel", "Livewire", "MySQL", "Bootstrap", "ApexCharts"],
+        liveUrl: "https://risktracker.felda.net.my/login",
+        githubUrl: "#",
+        icon: IconFileAlert,
+    },
+    {
+        title: "FGV Centralize Worker System",
+        shortTitle: "CWS",
+        category: "Web Application",
+        status: "Completed",
+        description:
+            "A centralized workforce management system with worker registration, employee records, operational dashboards, reporting, and API integration.",
+        tech: ["Laravel", "API", "MSSQL", "Bootstrap", "ApexCharts"],
+        liveUrl: "https://cws.fgvholdings.com/login",
+        githubUrl: "#",
+        icon: IconSeedling,
+    },
+    {
+        title: "FGV Mills e-Attendance System",
+        shortTitle: "e-Attendance",
+        category: "Web Application",
+        status: "Completed",
+        description:
+            "An employee attendance management system with face recognition device integration, attendance tracking, overtime management, and reporting.",
+        tech: ["Laravel", "API", "MSSQL", "Bootstrap"],
+        liveUrl: "https://hrqrcode.fgvholdings.com",
+        githubUrl: "#",
+        icon: IconBuildingFactory2,
+    },
+    {
         title: "HRMS Attendance System",
         shortTitle: "HRMS",
         category: "Web Application",
-        status: "Featured",
+        status: "Completed",
         description:
             "A human resource management system with attendance tracking, employee management, dashboards, leave, and claim modules.",
         tech: ["Laravel", "Livewire", "MySQL", "Bootstrap", "ApexCharts"],
-        liveUrl: "#",
+        liveUrl: "https://hrmslive.com/login",
         githubUrl: "#",
-        icon: IconDeviceDesktop,
+        icon: IconBriefcase,
     },
     {
-        title: "TaniCart Mart",
-        shortTitle: "TaniCart",
-        category: "Mobile / POS",
-        status: "In Progress",
-        description:
-            "A shopping and cashier system with order management, receipt printing, barcode scanning, and customer order flow.",
-        tech: ["Flutter", "Laravel API", "MySQL", "OneSignal"],
-        liveUrl: "#",
-        githubUrl: "#",
-        icon: IconCode,
-    },
-    {
-        title: "ASBF Application System",
-        shortTitle: "ASBF",
+        title: "Kulim Foreign Worker System",
+        shortTitle: "KFOR",
         category: "Web System",
         status: "Completed",
         description:
-            "An online application system for hostel registration, profile management, examination flow, and admin verification.",
-        tech: ["Laravel", "Livewire", "Fortify", "DataTables"],
+            "A foreign worker management system with worker registration, profile management, document tracking, and administrative verification.",
+        tech: ["Laravel", "MSSQL", "Bootstrap", "ApexCharts"],
         liveUrl: "#",
         githubUrl: "#",
         icon: IconServer,
-    },
-    {
-        title: "Vendor Management System",
-        shortTitle: "Vendor",
-        category: "Enterprise System",
-        status: "Case Study",
-        description:
-            "A vendor registration and renewal system with document validation, category management, audit trail, and policy acceptance.",
-        tech: ["Laravel", "MySQL", "API Integration", "Reports"],
-        liveUrl: "#",
-        githubUrl: "#",
-        icon: IconDeviceDesktop,
-    },
-    {
-        title: "Digital Wedding Invitation",
-        shortTitle: "Wedding",
-        category: "Mini Project",
-        status: "Personal",
-        description:
-            "A beautiful and interactive digital wedding invitation website with event details, gallery section, RSVP flow, and elegant animation.",
-        tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
-        liveUrl: "#",
-        githubUrl: "#",
-        icon: IconCode,
     },
 ];
 
@@ -264,9 +281,8 @@ export function Projects() {
                                     backdrop-blur
                                     transition
                                     duration-300
-                                    ${
-                                        isActive
-                                            ? `
+                                    ${isActive
+                                        ? `
                                                 scale-105
                                                 border-primary/60
                                                 bg-primary/15
@@ -274,7 +290,7 @@ export function Projects() {
                                                 shadow-lg
                                                 shadow-primary/20
                                             `
-                                            : `
+                                        : `
                                                 border-primary/15
                                                 bg-background/50
                                                 text-muted-foreground
